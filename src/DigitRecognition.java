@@ -1,8 +1,8 @@
 public class DigitRecognition {
 
 	public static void main (String args[]) {
-		FileReader trainingData = loadFile ("cw2DataSet2.csv");
-		FileReader testData = loadFile("cw2DataSet1.csv");
+		FileReader trainingData = loadFile ("cw2DataSet1.csv");
+		FileReader testData = loadFile("cw2DataSet2.csv");
 
 		// TEST
 		NearestNeighbour nn = new NearestNeighbour (trainingData, testData);
