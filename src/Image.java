@@ -27,7 +27,7 @@ public class Image {
 			output = Math.sqrt(output);
 			return output;
 		} catch (Exception e) {
-			System.out.println ("Image.getEuclideanDistance - an error has been found: " + e.getMessage());
+			System.out.println ("Image.getEuclideanDistance - an error has occurred: " + e.getMessage());
 			return errorValue;
 		}
 	}

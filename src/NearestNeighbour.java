@@ -25,7 +25,7 @@ public class NearestNeighbour {
 			}
 			return imageIndex;
 		} catch (Exception e) {
-			System.out.println ("NearestNeighbour.findNearestImage - an error has been found: " + e.getMessage());
+			System.out.println ("NearestNeighbour.findNearestImage - an error has occurred: " + e.getMessage());
 			return -1;
 		}
 	}
