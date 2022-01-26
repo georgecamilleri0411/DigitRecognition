@@ -13,17 +13,17 @@ public class NearestNeighbour {
 	 */
 	public int findNearestImage (Image testImage) {
 		try {
-			int imageIndex = -1;
-			double nearest = Double.MAX_VALUE;
+			int nearestImageIndex = -1;
+			double nearestDistance = Double.MAX_VALUE;
 			double current = 0;
 			for (int i = 0; i < this.trainingFile.imageList.size(); i++) {
 				current = (testImage.getEuclideanDistance(this.trainingFile.imageList.get(i)));
-				if (current < nearest) {
-					nearest = current;
-					imageIndex = i;
+				if (current < nearestDistance) {
+					nearestDistance = current;
+					nearestImageIndex = i;
 				}
 			}
-			return imageIndex;
+			return nearestImageIndex;
 		} catch (Exception e) {
 			System.out.println ("NearestNeighbour.findNearestImage - an error has occurred: " + e.getMessage());
 			return -1;

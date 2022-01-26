@@ -7,11 +7,20 @@ public class DigitRecognition {
 		FileReader dataSet1 = loadFile ("cw2DataSet1.csv");
 		FileReader dataSet2 = loadFile ("cw2DataSet2.csv");
 
+		//==================== Nearest Neighbour ====================//
 		// Classify the test data (file set 2) using Nearest Neighbour
+		double stats1 =
 		nearestNeighbour(dataSet1, dataSet2,false, true);
 
 		// Classify the test data (file set 1) using Nearest Neighbour
+		double stats2 =
 		nearestNeighbour(dataSet2, dataSet1,false, true);
+
+		// Display the average success rate after the two-fold tests
+		final DecimalFormat df = new DecimalFormat("#.####");
+		System.out.println ("Average success using two-fold tests: " +
+				df.format((stats1 + stats2) / 2) + "%");
+		//==================== Nearest Neighbour ====================//
 
 	}
 
@@ -29,7 +38,7 @@ public class DigitRecognition {
 	Classifies the data in testData using the Nearest Neighbour algorithm,
 	by 'learning' the data in trainingData.
 	 */
-	private static void nearestNeighbour (FileReader trainingData, FileReader testData, boolean displayClassification, boolean displayStatistics) {
+	private static double nearestNeighbour (FileReader trainingData, FileReader testData, boolean displayClassification, boolean displayStatistics) {
 		// Initialise an array to store the nearest neighbour element index
 		int[] n = new int[testData.imageList.size()];
 		int correct = 0;
@@ -49,13 +58,14 @@ public class DigitRecognition {
 			}
 		}
 
+		final DecimalFormat df = new DecimalFormat("#.####");
+		double stats;
+		stats =  (Double.valueOf(correct) * 100 / Double.valueOf(testData.imageList.size()));
+
 		// Display statistics?
 		if (displayStatistics) {
-			final DecimalFormat df = new DecimalFormat("#.####");
-			double stats;
-			stats = (correct * 100 / testData.imageList.size());
 			System.out.println ("Nearest Neighbour classification success: " + df.format(stats) + "% (" + correct + " correct classifications out of " + testData.imageList.size() + " tests)");
 		}
-
+		return stats;
 	}
 }
