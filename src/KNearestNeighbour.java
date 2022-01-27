@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
+import java.util.*;
 
 public class KNearestNeighbour {
 
@@ -40,20 +38,70 @@ public class KNearestNeighbour {
 	 */
 	public int findNearestImage (Image testImage, int kValue) {
 		try {
-			// Store the key (index) / value (Euclidean distance) pairs in a HashMap
-			HashMap<Integer,Double> distancesHM = new HashMap<>();
+			/*
+			Store the key (Euclidean distance) / value (Image) pairs in a HashMap.
+			The hashmap may end up having less records than the training data set,
+			since duplicate keys are overwritten. This will not impact the end result.
+			 */
+			HashMap<Double, Image> distancesHM = new HashMap<>();
 			for (int i = 0; i < this.trainingFile.imageList.size(); i++) {
-				distancesHM.put(i, testImage.getEuclideanDistance(this.trainingFile.imageList.get(i)));
+				distancesHM.put(testImage.getEuclideanDistance(this.trainingFile.imageList.get(i))
+						, this.trainingFile.imageList.get(i));
 			}
 
-			// Create an ArrayList with the Euclidean distancesHM, and sort it
-			ArrayList<Double> sortedAL = new ArrayList<>(distancesHM.values());
-			Collections.sort(sortedAL);
+			/*
+			Store the entries of the HashMap into a TreeMap, which sorts its
+			keys in their natural order.
+			 */
+			TreeMap<Double, Image> sortedTM = new TreeMap<>(distancesHM);
 
-			// Loop through the sorted ArrayList to find the nearest n (kValue) elements
-			// TODO Include an Integer field in Image to store it's index
+			// Store the first (i.e. nearest) k number of tuples in an ArrayList of Image
+			ArrayList<Image> classifiedAL = new ArrayList();
+			int z = 0;
+			for (Map.Entry<Double, Image> entry : sortedTM.entrySet()) {
+				if (z < kValue) {
+					classifiedAL.add (entry.getValue());
+				}
+				z++;
+			}
 
-			return 0;
+			/*
+			Store the first (i.e. nearest) k number of tuples in a HashMap, using the
+			digitValue as the key and iterating another integer as a value. This second
+			integer will store the number of occurrences of the digit (key).
+			 */
+			HashMap<Integer, Integer> occurrencesHM = new HashMap<>();
+			for (Image i : classifiedAL) {
+				Integer o = occurrencesHM.get(i.getDigitValue());
+				occurrencesHM.put(i.getDigitValue(), (o == null) ? 1 : (o + 1));
+			}
+
+			/*
+			Copy the values of the HashMap into 2 ArrayLists
+			 */
+			ArrayList<Integer> digitAL = new ArrayList();
+			ArrayList<Integer> occurrencesAL = new ArrayList();
+			for (Map.Entry<Integer, Integer> l : occurrencesHM.entrySet()) {
+				digitAL.add (l.getKey());
+				occurrencesAL.add (l.getValue());
+			}
+
+			/*
+			Loop through the occurrences ArrayList to find the digit that occurred
+			most times.
+			 */
+			int max = -1;
+			int winner = -1;
+			for (int m = 0; m < occurrencesAL.size(); m++) {
+				if (occurrencesAL.get(m) > max) {
+					max = occurrencesAL.get(m);
+					winner = m;
+				}
+			}
+
+			// Return the 'max' element from the digitalAL ArrayList
+			return digitAL.get(winner);
+
 		} catch (Exception e) {
 			System.out.println ("NearestNeighbour.findNearestImage - an error has occurred: " + e.getMessage());
 			return -1;

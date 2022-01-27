@@ -22,6 +22,8 @@ public class DigitRecognition {
 				df.format((stats1 + stats2) / 2) + "%");
 		//==================== Nearest Neighbour ====================//
 
+		KNearestNeighbour knn = new KNearestNeighbour(dataSet1, dataSet2, 10);
+		System.out.println(knn.findNearestImage(dataSet2.imageList.get(20), 15));
 	}
 
 	/*

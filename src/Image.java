@@ -1,16 +1,48 @@
 public class Image {
 
+	private int index;
 	private int[] digitData;
 	private int digitValue;
 
-	public Image (int[] _digitData) {
-		setDigitData(_digitData);
-		setDigitValue(-1);	// digitValue is set to an invalid value of -1
+	public int[] getDigitData() {
+		return digitData;
 	}
 
+	private void setDigitData(int[] digitData) {
+		this.digitData = digitData;
+	}
+
+	public int getDigitValue() {
+		return digitValue;
+	}
+
+	private void setDigitValue(int digitValue) {
+		this.digitValue = digitValue;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
+	}
+
+	/*
+	Constructor using the digitData and digitValue only. Used for NN.
+	 */
 	public Image (int[] _digitData, int _digitValue) {
 		setDigitData(_digitData);
 		setDigitValue(_digitValue);
+	}
+
+	/*
+	Constructor using the digitData, digitValue and index. Used for KNN.
+ 	*/
+	public Image (int[] _digitData, int _digitValue, int _index) {
+		setDigitData(_digitData);
+		setDigitValue(_digitValue);
+		setIndex(_index);
 	}
 
 	/*
@@ -32,19 +64,4 @@ public class Image {
 		}
 	}
 
-	public int[] getDigitData() {
-		return digitData;
-	}
-
-	private void setDigitData(int[] digitData) {
-		this.digitData = digitData;
-	}
-
-	public int getDigitValue() {
-		return digitValue;
-	}
-
-	private void setDigitValue(int digitValue) {
-		this.digitValue = digitValue;
-	}
 }

@@ -51,7 +51,7 @@ public class FileReader {
 			for (int l = 0; l < (line.length - 1); l++) {
 				output[l] = Integer.parseInt(line[l]);
 			}
-			this.imageList.add (new Image(output, Integer.parseInt(line[(line.length - 1)])));
+			this.imageList.add (new Image(output, Integer.parseInt(line[(line.length - 1)]), this.imageList.size()));
 		} catch (Exception e) {
 			System.out.println("FileReader.parseLine - An error has occurred - " + e.getMessage());
 			e.printStackTrace();
