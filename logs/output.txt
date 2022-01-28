@@ -1,0 +1,195 @@
+C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.2.2\lib\idea_rt.jar=53076:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.2.2\bin" -Dfile.encoding=UTF-8 -classpath C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\charsets.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\access-bridge-64.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\cldrdata.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\dnsns.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\jaccess.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\jfxrt.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\localedata.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\nashorn.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\sunec.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\sunjce_provider.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\sunmscapi.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\sunpkcs11.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\zipfs.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\jce.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\jfr.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\jfxswt.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\jsse.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\management-agent.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\resources.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\rt.jar;C:\Users\g.camilleri\IdeaProjects\Test\out\production\DigitRecognition DigitRecognition
+
+Handwritten Digit Recogniton using Machine Learning - Console Menu
+------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+G: TEST
+
+-------------------------------------------
+
+X: Exit
+
+Please make your choice: 
+a
+Loading dataset 1 (cw2DataSet1.csv)
+Dataset 1 loaded.
+Loading dataset 2 (cw2DataSet2.csv)
+Dataset 2 loaded.
+
+Handwritten Digit Recogniton using Machine Learning - Console Menu
+------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+G: TEST
+
+-------------------------------------------
+
+X: Exit
+
+Please make your choice: 
+c
+Please enter the k value (15): 
+15
+K-Nearest Neighbour classification success: 97.331% (2735 correct classifications out of 2810 tests)
+K-Nearest Neighbour classification success: 97.5445% (2741 correct classifications out of 2810 tests)
+K-Nearest Neighbour: average success using two-fold tests: 97.4377%
+
+Handwritten Digit Recogniton using Machine Learning - Console Menu
+------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+G: TEST
+
+-------------------------------------------
+
+X: Exit
+
+Please make your choice: 
+c
+Please enter the k value (15): 
+12
+K-Nearest Neighbour classification success: 97.2598% (2733 correct classifications out of 2810 tests)
+K-Nearest Neighbour classification success: 97.8292% (2749 correct classifications out of 2810 tests)
+K-Nearest Neighbour: average success using two-fold tests: 97.5445%
+
+Handwritten Digit Recogniton using Machine Learning - Console Menu
+------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+G: TEST
+
+-------------------------------------------
+
+X: Exit
+
+Please make your choice: 
+c
+Please enter the k value (15): 
+10
+K-Nearest Neighbour classification success: 97.6157% (2743 correct classifications out of 2810 tests)
+K-Nearest Neighbour classification success: 97.9004% (2751 correct classifications out of 2810 tests)
+K-Nearest Neighbour: average success using two-fold tests: 97.758%
+
+Handwritten Digit Recogniton using Machine Learning - Console Menu
+------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+G: TEST
+
+-------------------------------------------
+
+X: Exit
+
+Please make your choice: 
+c
+Please enter the k value (15): 
+5
+K-Nearest Neighbour classification success: 97.758% (2747 correct classifications out of 2810 tests)
+K-Nearest Neighbour classification success: 98.363% (2764 correct classifications out of 2810 tests)
+K-Nearest Neighbour: average success using two-fold tests: 98.0605%
+
+Handwritten Digit Recogniton using Machine Learning - Console Menu
+------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+G: TEST
+
+-------------------------------------------
+
+X: Exit
+
+Please make your choice: 
+c
+Please enter the k value (15): 
+2
+K-Nearest Neighbour classification success: 97.0107% (2726 correct classifications out of 2810 tests)
+K-Nearest Neighbour classification success: 97.6512% (2744 correct classifications out of 2810 tests)
+K-Nearest Neighbour: average success using two-fold tests: 97.331%
+
+Handwritten Digit Recogniton using Machine Learning - Console Menu
+------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+G: TEST
+
+-------------------------------------------
+
+X: Exit
+
+Please make your choice: 
+c
+Please enter the k value (15): 
+3
+K-Nearest Neighbour classification success: 98.0783% (2756 correct classifications out of 2810 tests)
+K-Nearest Neighbour classification success: 98.1139% (2757 correct classifications out of 2810 tests)
+K-Nearest Neighbour: average success using two-fold tests: 98.0961%
+
+Handwritten Digit Recogniton using Machine Learning - Console Menu
+------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+G: TEST
+
+-------------------------------------------
+
+X: Exit
+
+Please make your choice: 
+c
+Please enter the k value (15): 
+4
+K-Nearest Neighbour classification success: 97.8648% (2750 correct classifications out of 2810 tests)
+K-Nearest Neighbour classification success: 98.0427% (2755 correct classifications out of 2810 tests)
+K-Nearest Neighbour: average success using two-fold tests: 97.9537%
+
+Handwritten Digit Recogniton using Machine Learning - Console Menu
+------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+G: TEST
+
+-------------------------------------------
+
+X: Exit
+
+Please make your choice: 
+b
+Nearest Neighbour classification success: 98.0427% (2755 correct classifications out of 2810 tests)
+Nearest Neighbour classification success: 98.4698% (2767 correct classifications out of 2810 tests)
+Nearest Neighbour: average success using two-fold tests: 98.2562%
+
+Handwritten Digit Recogniton using Machine Learning - Console Menu
+------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+G: TEST
+
+-------------------------------------------
+
+X: Exit
+
+Please make your choice: 
+x
+
+Process finished with exit code 0
