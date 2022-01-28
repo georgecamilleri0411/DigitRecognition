@@ -105,8 +105,8 @@ public class DigitRecognition {
 	}
 
 	/*
-	Loads a comma-delimited file containing integer values and stores the values
-	in an ArrayList of type Integer.
+	Loads a comma-delimited file containing integer values, returning a FileReader object
+	that includes the dataset values stored in an ArrayList of type Integer.
 	 */
 	private static FileReader loadFile (String fileName) {
 		FileReader f = new FileReader();
@@ -174,14 +174,13 @@ public class DigitRecognition {
 		int[] n = new int[testData.imageList.size()];
 		int correct = 0;
 
-		// Classify the test data
-		KNearestNeighbour knn = new KNearestNeighbour(dataSet1, dataSet2, kValue);
-
 		KNearestNeighbour kNN = new KNearestNeighbour (trainingData, testData, kValue);
 		for (int i = 0; i < testData.imageList.size(); i++) {
 			n[i] = kNN.findNearestImage(testData.imageList.get(i), kValue);
+			//System.out.println ("Test data: " + testData.imageList.get(i).getDigitValue() + " | kNN: " + trainingData.imageList.get(n[i]).getDigitValue());
 
-			if (testData.imageList.get(i).getDigitValue() == trainingData.imageList.get(n[i]).getDigitValue()) {
+			//if (testData.imageList.get(i).getDigitValue() == trainingData.imageList.get(n[i]).getDigitValue()) {
+			if (testData.imageList.get(i).getDigitValue() == n[i]) {
 				correct++;
 			}
 
