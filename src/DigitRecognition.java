@@ -22,12 +22,12 @@ public class DigitRecognition {
 		final DecimalFormat df = new DecimalFormat("#.####");
 
 		if (displayChoices) {
-			System.out.println ("\nHandwritten Digit Recogniton using Machine Learning - Console Menu");
-			System.out.println ("------------------------------------------------------------------\n");
+			System.out.println ("\nHandwritten Digit Recognition using Machine Learning - Console Menu");
+			System.out.println ("-------------------------------------------------------------------\n");
 			System.out.println ("A: Load files");
 			System.out.println ("B: Nearest Neighbour (NN)");
 			System.out.println ("C: K-Nearest Neighbour (KNN)");
-			System.out.println ("G: TEST");
+			System.out.println ("D: K-Means (k-Means)");
 			System.out.println ("\n-------------------------------------------\n");
 			System.out.println ("X: Exit");
 		}
@@ -96,8 +96,28 @@ public class DigitRecognition {
 				displayMenu(true);
 				break;
 
+			case "D":	// K-Means
+
+				// Classify the test data (file set 2) using K-Nearest Neighbour
+				stats1 = kMeans (dataSet1, dataSet2, false, true);
+
+				// Classify the test data (file set 1) using Nearest Neighbour
+				stats2 = kMeans (dataSet2, dataSet1, false, true);
+
+				// Display the average success rate after the two-fold tests
+				System.out.println ("K-Nearest Neighbour: average success using two-fold tests: " +
+						df.format((stats1 + stats2) / 2) + "%");
+
+				displayMenu(true);
+				break;
+
 			case "X":	// Exit
 				System.exit(0);
+				break;
+
+			default :
+				System.out.println ("Invalid input. Please try again: ");
+				displayMenu(false);
 				break;
 
 		}
@@ -197,6 +217,24 @@ public class DigitRecognition {
 		// Display statistics?
 		if (displayStatistics) {
 			System.out.println ("K-Nearest Neighbour classification success: " + df.format(stats) + "% (" + correct + " correct classifications out of " + testData.imageList.size() + " tests)");
+		}
+		return stats;
+	}
+
+	/*
+	Classifies the data in testData using the Nearest Neighbour algorithm,
+	by 'learning' the data in trainingData.
+	 */
+	private static double kMeans (FileReader trainingData, FileReader testData, boolean displayClassification, boolean displayStatistics) {
+		KMeans kMeans = new KMeans (trainingData, testData);
+
+		final DecimalFormat df = new DecimalFormat("#.####");
+		double stats;
+		stats = 0; // (Double.valueOf(correct) * 100 / Double.valueOf(testData.imageList.size()));
+
+		// Display statistics?
+		if (displayStatistics) {
+			//System.out.println ("K-Means classification success: " + df.format(stats) + "% (" + correct + " correct classifications out of " + testData.imageList.size() + " tests)");
 		}
 		return stats;
 	}

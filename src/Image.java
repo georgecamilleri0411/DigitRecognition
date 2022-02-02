@@ -29,11 +29,9 @@ public class Image {
 	}
 
 	/*
-	Constructor using the digitData and digitValue only. Used for NN.
+	Constructor using no parameters. Used for k-Means.
 	 */
-	public Image (int[] _digitData, int _digitValue) {
-		setDigitData(_digitData);
-		setDigitValue(_digitValue);
+	public Image () {
 	}
 
 	/*

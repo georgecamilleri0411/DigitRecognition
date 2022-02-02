@@ -40,13 +40,16 @@ public class KNearestNeighbour {
 		try {
 			/*
 			Store the key (Euclidean distance) / value (Image) pairs in a HashMap.
-			The hashmap may end up having less records than the training data set,
-			since duplicate keys are overwritten. This will not impact the end result.
 			 */
 			HashMap<Double, Image> distancesHM = new HashMap<>();
+			double duplicate;	// Used when a duplicate key is detected.
 			for (int i = 0; i < this.trainingFile.imageList.size(); i++) {
-				distancesHM.put(testImage.getEuclideanDistance(this.trainingFile.imageList.get(i))
-						, this.trainingFile.imageList.get(i));
+				duplicate = testImage.getEuclideanDistance(this.trainingFile.imageList.get(i));
+				// Adds 0.00001 to the Euclidean distance so that duplicate keys are avoided
+				while (distancesHM.containsKey(duplicate)) {
+					duplicate = (duplicate + 0.00001);
+				}
+				distancesHM.put(duplicate, this.trainingFile.imageList.get(i));
 			}
 
 			/*
