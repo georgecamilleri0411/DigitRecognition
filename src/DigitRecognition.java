@@ -90,8 +90,8 @@ public class DigitRecognition {
 					kNearestNeighbour (dataSet2, dataSet1, kVal, false, true);
 
 				// Display the average success rate after the two-fold tests
-				System.out.println ("K-Nearest Neighbour: average success using two-fold tests: " +
-						df.format((stats1 + stats2) / 2) + "%");
+				System.out.println ("K-Nearest Neighbour: average success using two-fold tests with " +
+						"k == " + kVal + ": " + df.format((stats1 + stats2) / 2) + "%");
 
 				displayMenu(true);
 				break;
