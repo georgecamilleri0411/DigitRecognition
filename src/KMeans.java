@@ -79,7 +79,11 @@ public class KMeans {
 				count = this.digitCounts.get(this.clusteredMeans.get(d).getDigitValue());
 				for (int e = 0; e < this.clusteredMeans.get(d).getDigitData().length; e++) {
 					this.clusteredMeans.get(d).getDigitData()[e] = (this.clusteredMeans.get(d).getDigitData()[e] / count);
+					// TEST
+					System.out.print(e > 0 ? "," + this.clusteredMeans.get(d).getDigitData()[e] : this.clusteredMeans.get(d).getDigitData()[e]);
+					// TEST END
 				}
+				System.out.println();
 			}
 		} catch (Exception e) {
 			System.out.println ("KMeans.setDigitCount - an error has occurred: " + e.getMessage());
