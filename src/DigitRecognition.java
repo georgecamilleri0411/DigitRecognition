@@ -6,6 +6,7 @@ public class DigitRecognition {
 
 	private static FileReader dataSet1;
 	private static FileReader dataSet2;
+	private static boolean filesLoaded = false;
 
 	public static void main (String args[]) {
 
@@ -46,10 +47,18 @@ public class DigitRecognition {
 				dataSet2 = loadFile ("cw2DataSet2.csv");
 				System.out.println ("Dataset 2 loaded.");
 
+				filesLoaded = true;
+
 				displayMenu(true);
 				break;
 
 			case "B":	// Nearest Neighbour
+				// Check if the data sets have been loaded
+				if (!filesLoaded) {
+					System.out.println ("Datasets have not been loaded. Please select option A to load the data.");
+					displayMenu(false);
+				}
+
 				// Classify the test data (file set 2) using Nearest Neighbour
 				double stats1 =
 					nearestNeighbour(dataSet1, dataSet2,false, true);
@@ -66,6 +75,11 @@ public class DigitRecognition {
 				break;
 
 			case "C":	// K-Nearest Neighbour
+				// Check if the data sets have been loaded
+				if (!filesLoaded) {
+					System.out.println ("Datasets have not been loaded. Please select option A to load the data.");
+					displayMenu(false);
+				}
 
 				// Default value of k is 15
 				final String kDefault = "15";
@@ -97,6 +111,11 @@ public class DigitRecognition {
 				break;
 
 			case "D":	// K-Means
+				// Check if the data sets have been loaded
+				if (!filesLoaded) {
+					System.out.println ("Datasets have not been loaded. Please select option A to load the data.");
+					displayMenu(false);
+				}
 
 				// Classify the test data (file set 2) using K-Nearest Neighbour
 				stats1 = kMeans (dataSet1, dataSet2, false, true);
@@ -197,9 +216,7 @@ public class DigitRecognition {
 		KNearestNeighbour kNN = new KNearestNeighbour (trainingData, testData, kValue);
 		for (int i = 0; i < testData.imageList.size(); i++) {
 			n[i] = kNN.findNearestImage(testData.imageList.get(i), kValue);
-			//System.out.println ("Test data: " + testData.imageList.get(i).getDigitValue() + " | kNN: " + trainingData.imageList.get(n[i]).getDigitValue());
 
-			//if (testData.imageList.get(i).getDigitValue() == trainingData.imageList.get(n[i]).getDigitValue()) {
 			if (testData.imageList.get(i).getDigitValue() == n[i]) {
 				correct++;
 			}
@@ -226,15 +243,32 @@ public class DigitRecognition {
 	by 'learning' the data in trainingData.
 	 */
 	private static double kMeans (FileReader trainingData, FileReader testData, boolean displayClassification, boolean displayStatistics) {
+		// Initialise an array to store the nearest neighbour element index
+		int[] n = new int[testData.imageList.size()];
+		int correct = 0;
+
 		KMeans kMeans = new KMeans (trainingData, testData);
+
+		for (int i = 0; i < testData.imageList.size(); i++) {
+			n[i] = kMeans.findNearestImage(testData.imageList.get(i));
+
+			if (testData.imageList.get(i).getDigitValue() == n[i]) {
+				correct++;
+			}
+
+			// Display classification data?
+			if (displayClassification) {
+				System.out.println(testData.imageList.get(i).getDigitValue() + ";" + trainingData.imageList.get(n[i]).getDigitValue());
+			}
+		}
 
 		final DecimalFormat df = new DecimalFormat("#.####");
 		double stats;
-		stats = 0; // (Double.valueOf(correct) * 100 / Double.valueOf(testData.imageList.size()));
+		stats =  (Double.valueOf(correct) * 100 / Double.valueOf(testData.imageList.size()));
 
 		// Display statistics?
 		if (displayStatistics) {
-			//System.out.println ("K-Means classification success: " + df.format(stats) + "% (" + correct + " correct classifications out of " + testData.imageList.size() + " tests)");
+			System.out.println ("K-Means classification success: " + df.format(stats) + "% (" + correct + " correct classifications out of " + testData.imageList.size() + " tests)");
 		}
 		return stats;
 	}

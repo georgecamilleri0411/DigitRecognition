@@ -95,8 +95,8 @@ public class KMeans {
 			int nearestImageIndex = -1;
 			double nearestDistance = Double.MAX_VALUE;
 			double current = 0;
-			for (int i = 0; i < this.trainingFile.imageList.size(); i++) {
-				current = (testImage.getEuclideanDistance(this.trainingFile.imageList.get(i)));
+			for (int i = 0; i < this.clusteredMeans.size(); i++) {
+				current = (testImage.getEuclideanDistance2(this.clusteredMeans.get(i)));
 				if (current < nearestDistance) {
 					nearestDistance = current;
 					nearestImageIndex = i;
@@ -104,7 +104,7 @@ public class KMeans {
 			}
 			return nearestImageIndex;
 		} catch (Exception e) {
-			System.out.println ("NearestNeighbour.findNearestImage - an error has occurred: " + e.getMessage());
+			System.out.println ("KMeans.findNearestImage - an error has occurred: " + e.getMessage());
 			return -1;
 		}
 	}
