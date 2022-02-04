@@ -45,7 +45,7 @@ public class KMeans {
 			// Create an object in the clusteredMeans ArrayList for each digit.
 			double[] digitData = new double[this.trainingFile.imageList.get(0).getDigitData().length];
 			for (Map.Entry<Integer, Integer> entry : digitCounts.entrySet()) {
-				clusteredMeans.add(new ClusteredImage(digitData, entry.getKey()));
+				clusteredMeans.add(new ClusteredImage(new double[this.trainingFile.imageList.get(0).getDigitData().length], entry.getKey()));
 			}
 
 			int digit;
@@ -53,6 +53,7 @@ public class KMeans {
 			for (int i = 0; i < this.trainingFile.imageList.size(); i++) {
 				digit = this.trainingFile.imageList.get(i).getDigitValue();
 				digitData = Arrays.stream(this.trainingFile.imageList.get(i).getDigitData()).asDoubleStream().toArray();
+
 				/*
 				Update the digitData array in the appropriate ClusteredImage element. First,
 				we must find the related element in the clusteredMeans ArrayList
@@ -79,11 +80,7 @@ public class KMeans {
 				count = this.digitCounts.get(this.clusteredMeans.get(d).getDigitValue());
 				for (int e = 0; e < this.clusteredMeans.get(d).getDigitData().length; e++) {
 					this.clusteredMeans.get(d).getDigitData()[e] = (this.clusteredMeans.get(d).getDigitData()[e] / count);
-					// TEST
-					System.out.print(e > 0 ? "," + this.clusteredMeans.get(d).getDigitData()[e] : this.clusteredMeans.get(d).getDigitData()[e]);
-					// TEST END
 				}
-				System.out.println();
 			}
 		} catch (Exception e) {
 			System.out.println ("KMeans.setDigitCount - an error has occurred: " + e.getMessage());
