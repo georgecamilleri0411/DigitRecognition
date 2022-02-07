@@ -20,7 +20,7 @@ public class DigitRecognition {
 	 */
 	private static void displayMenu (boolean displayChoices) {
 
-		final DecimalFormat df = new DecimalFormat("#.####");
+		final DecimalFormat df = new DecimalFormat("#.######");
 
 		if (displayChoices) {
 			System.out.println ("\nHandwritten Digit Recognition using Machine Learning - Console Menu");
@@ -104,8 +104,8 @@ public class DigitRecognition {
 					kNearestNeighbour (dataSet2, dataSet1, kVal, false, true);
 
 				// Display the average success rate after the two-fold tests
-				System.out.println ("K-Nearest Neighbour: average success using two-fold tests with " +
-						"k == " + kVal + ": " + df.format((stats1 + stats2) / 2) + "%");
+				System.out.println ("K-Nearest Neighbour: average success using two-fold tests " +
+						"(k==" + kVal + "): " + df.format((stats1 + stats2) / 2) + "%");
 
 				displayMenu(true);
 				break;
@@ -193,7 +193,7 @@ public class DigitRecognition {
 			}
 		}
 
-		final DecimalFormat df = new DecimalFormat("#.####");
+		final DecimalFormat df = new DecimalFormat("#.######");
 		double stats;
 		stats =  (Double.valueOf(correct) * 100 / Double.valueOf(testData.imageList.size()));
 
@@ -227,13 +227,13 @@ public class DigitRecognition {
 			}
 		}
 
-		final DecimalFormat df = new DecimalFormat("#.####");
+		final DecimalFormat df = new DecimalFormat("#.######");
 		double stats;
 		stats =  (Double.valueOf(correct) * 100 / Double.valueOf(testData.imageList.size()));
 
 		// Display statistics?
 		if (displayStatistics) {
-			System.out.println ("K-Nearest Neighbour classification success: " + df.format(stats) + "% (" + correct + " correct classifications out of " + testData.imageList.size() + " tests)");
+			System.out.println ("K-Nearest Neighbour classification success (k==" + kValue + "): " + df.format(stats) + "% (" + correct + " correct classifications out of " + testData.imageList.size() + " tests)");
 		}
 		return stats;
 	}
@@ -262,7 +262,7 @@ public class DigitRecognition {
 			}
 		}
 
-		final DecimalFormat df = new DecimalFormat("#.####");
+		final DecimalFormat df = new DecimalFormat("#.######");
 		double stats;
 		stats =  (Double.valueOf(correct) * 100 / Double.valueOf(testData.imageList.size()));
 
