@@ -29,6 +29,8 @@ public class DigitRecognition {
 			System.out.println ("B: Nearest Neighbour (NN)");
 			System.out.println ("C: K-Nearest Neighbour (KNN)");
 			System.out.println ("D: K-Means (k-Means)");
+			System.out.println ("E: K-Means v.2 (k-Means2)");
+			System.out.println ("F: K-Medians (k-Medians)");
 			System.out.println ("\n-------------------------------------------\n");
 			System.out.println ("X: Exit");
 		}
@@ -124,7 +126,47 @@ public class DigitRecognition {
 				stats2 = kMeans (dataSet2, dataSet1, false, true);
 
 				// Display the average success rate after the two-fold tests
-				System.out.println ("K-Nearest Neighbour: average success using two-fold tests: " +
+				System.out.println ("K-Means: average success using two-fold tests: " +
+						df.format((stats1 + stats2) / 2) + "%");
+
+				displayMenu(true);
+				break;
+
+			case "E":	// K-Means2
+				// Check if the data sets have been loaded
+				if (!filesLoaded) {
+					System.out.println ("Datasets have not been loaded. Please select option A to load the data.");
+					displayMenu(false);
+				}
+
+				// Classify the test data (file set 2) using K-Means2
+				stats1 = kMeans2 (dataSet1, dataSet2, false, true);
+
+				// Classify the test data (file set 1) using Nearest Neighbour
+				stats2 = kMeans2 (dataSet2, dataSet1, false, true);
+
+				// Display the average success rate after the two-fold tests
+				System.out.println ("K-Means2: average success using two-fold tests: " +
+						df.format((stats1 + stats2) / 2) + "%");
+
+				displayMenu(true);
+				break;
+
+			case "F":	// K-Medians
+				// Check if the data sets have been loaded
+				if (!filesLoaded) {
+					System.out.println ("Datasets have not been loaded. Please select option A to load the data.");
+					displayMenu(false);
+				}
+
+				// Classify the test data (file set 2) using K-Means2
+				stats1 = kMedians (dataSet1, dataSet2, false, true);
+
+				// Classify the test data (file set 1) using Nearest Neighbour
+				stats2 = kMedians (dataSet2, dataSet1, false, true);
+
+				// Display the average success rate after the two-fold tests
+				System.out.println ("K-Medians: average success using two-fold tests: " +
 						df.format((stats1 + stats2) / 2) + "%");
 
 				displayMenu(true);
@@ -205,8 +247,10 @@ public class DigitRecognition {
 	}
 
 	/*
-	Classifies the data in testData using the Nearest Neighbour algorithm,
-	by 'learning' the data in trainingData.
+	Classifies the data in testData using the k-Nearest Neighbour algorithm,
+	by 'learning' the data in trainingData and clustering by selecting the
+	best k number of training values, then using Nearest Neighbour to elect the
+	most 'popular' option.
 	 */
 	private static double kNearestNeighbour (FileReader trainingData, FileReader testData, int kValue, boolean displayClassification, boolean displayStatistics) {
 		// Initialise an array to store the nearest neighbour element index
@@ -239,8 +283,9 @@ public class DigitRecognition {
 	}
 
 	/*
-	Classifies the data in testData using the Nearest Neighbour algorithm,
-	by 'learning' the data in trainingData.
+	Classifies the data in testData using the k-Means algorithm, clustering the data
+	in trainingData by calculating the mean value for each pixel for every digit.
+	Nearest Neighbour is then used to find the closest value from the clustered data.
 	 */
 	private static double kMeans (FileReader trainingData, FileReader testData, boolean displayClassification, boolean displayStatistics) {
 		// Initialise an array to store the nearest neighbour element index
@@ -269,6 +314,82 @@ public class DigitRecognition {
 		// Display statistics?
 		if (displayStatistics) {
 			System.out.println ("K-Means classification success: " + df.format(stats) + "% (" + correct + " correct classifications out of " + testData.imageList.size() + " tests)");
+		}
+		return stats;
+	}
+
+	/*
+	Classifies the data in testData using a slight variation of the k-Means algorithm,
+	clustering the data in trainingData by calculating the mean value for each pixel.
+	An additional step is taken before calculating the mean values to use only the edge
+	values for each pixel, i.e. finding the mean value for the highest and lowest value
+	of each pixel (for every digit). Nearest Neighbour is then used to find the closest
+	value from the clustered data.
+	 */
+	private static double kMeans2 (FileReader trainingData, FileReader testData, boolean displayClassification, boolean displayStatistics) {
+		// Initialise an array to store the nearest neighbour element index
+		int[] n = new int[testData.imageList.size()];
+		int correct = 0;
+
+		KMeans2 kMeans2 = new KMeans2 (trainingData, testData);
+
+		for (int i = 0; i < testData.imageList.size(); i++) {
+			n[i] = kMeans2.findNearestImage(testData.imageList.get(i));
+
+			if (testData.imageList.get(i).getDigitValue() == n[i]) {
+				correct++;
+			}
+
+			// Display classification data?
+			if (displayClassification) {
+				System.out.println(testData.imageList.get(i).getDigitValue() + ";" + trainingData.imageList.get(n[i]).getDigitValue());
+			}
+		}
+
+		final DecimalFormat df = new DecimalFormat("#.######");
+		double stats;
+		stats =  (Double.valueOf(correct) * 100 / Double.valueOf(testData.imageList.size()));
+
+		// Display statistics?
+		if (displayStatistics) {
+			System.out.println ("K-Means2 classification success: " + df.format(stats) + "% (" + correct + " correct classifications out of " + testData.imageList.size() + " tests)");
+		}
+		return stats;
+	}
+
+	/*
+	Classifies the data in testData using a variation of the k-Means algorithm,
+	i.e. clustering the data in trainingData by calculating the median (instead of mean)
+	value for each pixel for every digit. Nearest Neighbour is then used to find the
+	closest value from the clustered data.
+	 */
+	private static double kMedians (FileReader trainingData, FileReader testData, boolean displayClassification, boolean displayStatistics) {
+		// Initialise an array to store the nearest neighbour element index
+		int[] n = new int[testData.imageList.size()];
+		int correct = 0;
+
+		KMedians kMedians = new KMedians (trainingData, testData);
+
+		for (int i = 0; i < testData.imageList.size(); i++) {
+			n[i] = kMedians.findNearestImage(testData.imageList.get(i));
+
+			if (testData.imageList.get(i).getDigitValue() == n[i]) {
+				correct++;
+			}
+
+			// Display classification data?
+			if (displayClassification) {
+				System.out.println(testData.imageList.get(i).getDigitValue() + ";" + trainingData.imageList.get(n[i]).getDigitValue());
+			}
+		}
+
+		final DecimalFormat df = new DecimalFormat("#.######");
+		double stats;
+		stats =  (Double.valueOf(correct) * 100 / Double.valueOf(testData.imageList.size()));
+
+		// Display statistics?
+		if (displayStatistics) {
+			System.out.println ("K-Medians classification success: " + df.format(stats) + "% (" + correct + " correct classifications out of " + testData.imageList.size() + " tests)");
 		}
 		return stats;
 	}

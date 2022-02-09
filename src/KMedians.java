@@ -3,18 +3,18 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
-public class KMeans {
+public class KMedians {
 
 	private FileReader trainingFile;
 	private FileReader testFile;
-	private ArrayList<ClusteredImage> clusteredMeans = new ArrayList();
 	private HashMap<Integer, Integer> digitCounts = new HashMap<>();
+	private ArrayList<ClusteredImage> clusteredMedians = new ArrayList();
 
-	public KMeans(FileReader _trainingFile, FileReader _testFile) {
+	public KMedians(FileReader _trainingFile, FileReader _testFile) {
 		this.trainingFile = _trainingFile;
 		this.testFile = _testFile;
 		setDigitCounts();
-		setClusterMeanValues();
+		setClusterMedianValues();
 	}
 
 	/*
@@ -33,19 +33,19 @@ public class KMeans {
 				}
 			}
 		} catch (Exception e) {
-			System.out.println ("KMeans.setDigitCounts - an error has occurred: " + e.getMessage());
+			System.out.println ("KMedians.setDigitCounts - an error has occurred: " + e.getMessage());
 		}
 	}
 
 	/*
-	Loops through the training dataset and stores the mean values of each pixel for each digit.
+	Loops through the training dataset and stores the median values of each pixel for each digit.
 	 */
-	private void setClusterMeanValues() {
+	private void setClusterMedianValues() {
 		try {
 			// Create an object in the clusteredMeans ArrayList for each digit.
 			double[] digitData = new double[this.trainingFile.imageList.get(0).getDigitData().length];
 			for (Map.Entry<Integer, Integer> entry : digitCounts.entrySet()) {
-				clusteredMeans.add(new ClusteredImage(new double[this.trainingFile.imageList.get(0).getDigitData().length], entry.getKey()));
+				clusteredMedians.add(new ClusteredImage(new double[this.trainingFile.imageList.get(0).getDigitData().length], entry.getKey()));
 			}
 
 			int digit;
@@ -58,8 +58,8 @@ public class KMeans {
 				Update the digitData array in the appropriate ClusteredImage element. First,
 				we must find the related element in the clusteredMeans ArrayList
 				 */
-				for (int e = 0; e < this.clusteredMeans.size(); e++) {
-					if (this.clusteredMeans.get(e).getDigitValue() == digit) {
+				for (int e = 0; e < this.clusteredMedians.size(); e++) {
+					if (this.clusteredMedians.get(e).getDigitValue() == digit) {
 						element = e;
 						break;
 					}
@@ -67,23 +67,40 @@ public class KMeans {
 				/*
 				 Loop through each pixel in the training dataset and update its value in
 				 the clusteredMeans ArrayList
+				 CHECK HERE!
 				 */
-				for (int p = 0; p < this.clusteredMeans.get(element).getDigitData().length; p++) {
-					this.clusteredMeans.get(element).getDigitData()[p] += digitData[p];
+				for (int p = 0; p < this.clusteredMedians.get(element).getDigitData().length; p++) {
+					this.clusteredMedians.get(element).getDigitData()[p] += digitData[p];
 				}
 
 			}
 
 			// Loop through the clusteredMeans ArrayList and average the values for each digit
-			int count = 0;
-			for (int d = 0; d < this.clusteredMeans.size(); d++) {
-				count = this.digitCounts.get(this.clusteredMeans.get(d).getDigitValue());
-				for (int e = 0; e < this.clusteredMeans.get(d).getDigitData().length; e++) {
-					this.clusteredMeans.get(d).getDigitData()[e] = (this.clusteredMeans.get(d).getDigitData()[e] / count);
+			double median;
+			double[] sorted;
+			for (int d = 0; d < this.clusteredMedians.size(); d++) {
+				// TEST
+				System.out.print (this.clusteredMedians.get(d).getDigitValue() + ": ");
+				// TEST END
+				sorted = this.clusteredMedians.get(d).getDigitData().clone();
+				Arrays.sort(sorted);
+				if ((sorted.length % 2) == 1) {
+					median = sorted[((sorted.length + 1)/2) - 1];
+				} else {
+					median = (sorted[((sorted.length / 2) - 1)] + sorted[((sorted.length / 2))]) / 2;
+				}
+				for (int e = 0; e < this.clusteredMedians.get(d).getDigitData().length; e++) {
+					this.clusteredMedians.get(d).getDigitData()[e] = median;
+					// TEST
+					System.out.print (this.clusteredMedians.get(d).getDigitData()[e] + ",");
+					// TEST END
 				}
 			}
+			// TEST
+			System.out.println();
+			// TEST END
 		} catch (Exception e) {
-			System.out.println ("KMeans.setDigitCount - an error has occurred: " + e.getMessage());
+			System.out.println ("KMedians.setDigitCount - an error has occurred: " + e.getMessage());
 		}
 	}
 
@@ -95,8 +112,8 @@ public class KMeans {
 			int nearestImageIndex = -1;
 			double nearestDistance = Double.MAX_VALUE;
 			double current = 0;
-			for (int i = 0; i < this.clusteredMeans.size(); i++) {
-				current = (testImage.getEuclideanDistance2(this.clusteredMeans.get(i)));
+			for (int i = 0; i < this.clusteredMedians.size(); i++) {
+				current = (testImage.getEuclideanDistance2(this.clusteredMedians.get(i)));
 				if (current < nearestDistance) {
 					nearestDistance = current;
 					nearestImageIndex = i;
@@ -104,7 +121,7 @@ public class KMeans {
 			}
 			return nearestImageIndex;
 		} catch (Exception e) {
-			System.out.println ("KMeans.findNearestImage - an error has occurred: " + e.getMessage());
+			System.out.println ("KMedians.findNearestImage - an error has occurred: " + e.getMessage());
 			return -1;
 		}
 	}
