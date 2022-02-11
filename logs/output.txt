@@ -1,4 +1,4 @@
-/Users/George/Library/Java/JavaVirtualMachines/openjdk-17.0.2/Contents/Home/bin/java -javaagent:/Users/George/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/213.6777.52/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=50044:/Users/George/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/213.6777.52/IntelliJ IDEA.app/Contents/bin -Dfile.encoding=UTF-8 -classpath /Volumes/SSD128GB/Google Drive/Education/MDX BSc CS/Modules/7 - CST3170 - Artificial Intelligence/Courseworks/CW2/Test/out/production/DigitRecognition DigitRecognition
+/Users/George/Library/Java/JavaVirtualMachines/openjdk-17.0.2/Contents/Home/bin/java -javaagent:/Users/George/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/213.6777.52/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=50740:/Users/George/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/213.6777.52/IntelliJ IDEA.app/Contents/bin -Dfile.encoding=UTF-8 -classpath /Volumes/SSD128GB/Google Drive/Education/MDX BSc CS/Modules/7 - CST3170 - Artificial Intelligence/Courseworks/CW2/Test/out/production/DigitRecognition DigitRecognition
 
 Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
@@ -7,6 +7,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -26,6 +28,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -44,6 +48,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -64,6 +70,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -84,6 +92,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -104,6 +114,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -124,6 +136,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -144,6 +158,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -164,6 +180,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -184,6 +202,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -204,6 +224,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -224,6 +246,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -244,6 +268,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -264,6 +290,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -284,6 +312,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -304,6 +334,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -324,6 +356,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -344,6 +378,8 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
@@ -353,7 +389,7 @@ Please make your choice:
 d
 K-Means classification success: 89.893238% (2526 correct classifications out of 2810 tests)
 K-Means classification success: 90.960854% (2556 correct classifications out of 2810 tests)
-K-Nearest Neighbour: average success using two-fold tests: 90.427046%
+K-Means: average success using two-fold tests: 90.427046%
 
 Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
@@ -362,6 +398,48 @@ A: Load files
 B: Nearest Neighbour (NN)
 C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+
+-------------------------------------------
+
+X: Exit
+
+Please make your choice: 
+e
+K-Means2 classification success: 37.935943% (1066 correct classifications out of 2810 tests)
+K-Means2 classification success: 40.071174% (1126 correct classifications out of 2810 tests)
+K-Means2: average success using two-fold tests: 39.003559%
+
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+
+-------------------------------------------
+
+X: Exit
+
+Please make your choice: 
+f
+K-Medians classification success: 89.252669% (2508 correct classifications out of 2810 tests)
+K-Medians classification success: 90.142349% (2533 correct classifications out of 2810 tests)
+K-Medians: average success using two-fold tests: 89.697509%
+
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
 
 -------------------------------------------
 
