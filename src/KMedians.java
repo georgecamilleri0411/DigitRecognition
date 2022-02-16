@@ -43,53 +43,64 @@ public class KMedians {
 	private void setClusterMedianValues() {
 		try {
 			// Create an object in the clusteredMeans ArrayList for each digit.
-			double[] digitData; // = new double[this.trainingFile.imageList.get(0).getDigitData().length];
+			double[] digitData = new double[this.trainingFile.imageList.get(0).getDigitData().length];
 			for (Map.Entry<Integer, Integer> entry : digitCounts.entrySet()) {
-				this.clusteredMedians.add(new ClusteredImage(new double[this.trainingFile.imageList.get(0).getDigitData().length], entry.getKey()));
+				clusteredMedians.add(new ClusteredImage(new double[this.trainingFile.imageList.get(0).getDigitData().length], entry.getKey()));
 			}
 
-			// Loop again through the HashMap to find the median value for each pixel
 			int digit;
-			int count;
-			int[] pixelValues;
-			double[] medianValues;
-			for (Map.Entry<Integer, Integer> entry : digitCounts.entrySet()) {
-				digit = entry.getKey();
-				count = entry.getValue();
-				pixelValues = new int[count];
-				medianValues = new double[this.trainingFile.imageList.get(0).getDigitData().length];
-				int counter = 0;
-				// Loop through each pixel value in each image
-				for (int p = 0; p < this.trainingFile.imageList.get(0).getDigitData().length; p++) {
-					counter = 0;
-					// Loop through each image, processing only those where the digitValue matches the current digit
-					for (int d = 0; d < this.trainingFile.imageList.size(); d++) {
-						if (this.trainingFile.imageList.get(d).getDigitValue() == digit) {
-							pixelValues[counter] = this.trainingFile.imageList.get(d).getDigitData()[p];
-							counter++;
-						}
-					}
-					// pixelValues array has been populated. Now it will be sorted and the median value found.
-					Arrays.sort(pixelValues);
-					if (pixelValues.length % 2 == 1) {
-						medianValues[p] = (double) pixelValues[(pixelValues.length - 1) / 2];
-					} else {
-						medianValues[p] = (double) ((pixelValues[((pixelValues.length - 2) / 2)] + pixelValues[(((pixelValues.length - 2) / 2) + 1)]) / 2);
-					}
-					// The median value will be stored in the appropriate clusteredMedians element
-					for (int c = 0; c < this.clusteredMedians.size(); c++) {
-						if (this.clusteredMedians.get(c).getDigitValue() == digit) {
-							for (int x = 0; x < this.clusteredMedians.get(c).getDigitData().length; x++) {
-								this.clusteredMedians.get(c).getDigitData()[x] = medianValues[x];
-							}
-							c = this.clusteredMedians.size();
-							break;
-						}
+			int element = -1;
+			for (int i = 0; i < this.trainingFile.imageList.size(); i++) {
+				digit = this.trainingFile.imageList.get(i).getDigitValue();
+				digitData = Arrays.stream(this.trainingFile.imageList.get(i).getDigitData()).asDoubleStream().toArray();
+
+				/*
+				Update the digitData array in the appropriate ClusteredImage element. First,
+				we must find the related element in the clusteredMeans ArrayList
+				 */
+				for (int e = 0; e < this.clusteredMedians.size(); e++) {
+					if (this.clusteredMedians.get(e).getDigitValue() == digit) {
+						element = e;
+						break;
 					}
 				}
+				/*
+				 Loop through each pixel in the training dataset and update its value in
+				 the clusteredMeans ArrayList
+				 CHECK HERE!
+				 */
+				for (int p = 0; p < this.clusteredMedians.get(element).getDigitData().length; p++) {
+					this.clusteredMedians.get(element).getDigitData()[p] += digitData[p];
+				}
+
 			}
+
+			// Loop through the clusteredMeans ArrayList and average the values for each digit
+			double median;
+			double[] sorted;
+			for (int d = 0; d < this.clusteredMedians.size(); d++) {
+				// TEST
+				System.out.print (this.clusteredMedians.get(d).getDigitValue() + ": ");
+				// TEST END
+				sorted = this.clusteredMedians.get(d).getDigitData().clone();
+				Arrays.sort(sorted);
+				if ((sorted.length % 2) == 1) {
+					median = sorted[((sorted.length + 1)/2) - 1];
+				} else {
+					median = (sorted[((sorted.length / 2) - 1)] + sorted[((sorted.length / 2))]) / 2;
+				}
+				for (int e = 0; e < this.clusteredMedians.get(d).getDigitData().length; e++) {
+					this.clusteredMedians.get(d).getDigitData()[e] = median;
+					// TEST
+					System.out.print (this.clusteredMedians.get(d).getDigitData()[e] + ",");
+					// TEST END
+				}
+			}
+			// TEST
+			System.out.println();
+			// TEST END
 		} catch (Exception e) {
-			System.out.println ("KMedians.setClusterMedianValues - an error has occurred: " + e.getMessage());
+			System.out.println ("KMedians.setDigitCount - an error has occurred: " + e.getMessage());
 		}
 	}
 
