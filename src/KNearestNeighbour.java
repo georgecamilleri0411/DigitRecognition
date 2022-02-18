@@ -3,7 +3,6 @@ import java.util.*;
 public class KNearestNeighbour {
 
 	private FileReader trainingFile;
-	private FileReader testFile;
 	private int k;
 	final private int maxK = 12;	// Maximum value of K allowed
 	final private int minK = 2;	// Minimum value of K allowed
@@ -19,17 +18,15 @@ public class KNearestNeighbour {
 	/*
 	Constructor accepting the training and test files
 	 */
-	public KNearestNeighbour(FileReader _trainingFile, FileReader _testFile) {
+	public KNearestNeighbour(FileReader _trainingFile) {
 		this.trainingFile = _trainingFile;
-		this.testFile = _testFile;
 	}
 
 	/*
 	Constructor accepting the training and test files as well as the value for k
 	 */
-	public KNearestNeighbour(FileReader _trainingFile, FileReader _testFile, int _k) {
+	public KNearestNeighbour(FileReader _trainingFile, int _k) {
 		this.trainingFile = _trainingFile;
-		this.testFile = _testFile;
 		this.setK(_k);
 	}
 

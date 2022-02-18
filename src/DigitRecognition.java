@@ -1,11 +1,15 @@
 import java.security.KeyStore;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class DigitRecognition {
 
 	private static FileReader dataSet1;
-	private static FileReader dataSet2;
+ 	private static FileReader dataSet2;
+	private static FileReader shuffled1 = new FileReader();
+	private static FileReader shuffled2 = new FileReader();
 	private static boolean filesLoaded = false;
 
 	public static void main (String args[]) {
@@ -23,6 +27,7 @@ public class DigitRecognition {
 		final DecimalFormat df = new DecimalFormat("#.######");
 
 		if (displayChoices) {
+			System.out.println ("===================================================================");
 			System.out.println ("\nHandwritten Digit Recognition using Machine Learning - Console Menu");
 			System.out.println ("-------------------------------------------------------------------\n");
 			System.out.println ("A: Load files");
@@ -31,8 +36,11 @@ public class DigitRecognition {
 			System.out.println ("D: K-Means (k-Means)");
 			System.out.println ("E: K-Means v.2 (k-Means2)");
 			System.out.println ("F: K-Medians (k-Medians)");
-			System.out.println ("\n-------------------------------------------\n");
+			System.out.println ("-------------------------------------------------------------------");
+			System.out.println ("G: Shuffle datasets");
+			System.out.println ("-------------------------------------------------------------------");
 			System.out.println ("X: Exit");
+			System.out.println ("===================================================================");
 		}
 		System.out.println ("\nPlease make your choice: ");
 
@@ -63,11 +71,11 @@ public class DigitRecognition {
 
 				// Classify the test data (file set 2) using Nearest Neighbour
 				double stats1 =
-					nearestNeighbour(dataSet1, dataSet2,false, true);
+						nearestNeighbour(dataSet1, dataSet2,false, true);
 
 				// Classify the test data (file set 1) using Nearest Neighbour
 				double stats2 =
-					nearestNeighbour(dataSet2, dataSet1,false, true);
+						nearestNeighbour(dataSet2, dataSet1,false, true);
 
 				// Display the average success rate after the two-fold tests
 				System.out.println ("Nearest Neighbour: average success using two-fold tests: " +
@@ -99,11 +107,11 @@ public class DigitRecognition {
 
 				// Classify the test data (file set 2) using K-Nearest Neighbour
 				stats1 =
-					kNearestNeighbour (dataSet1, dataSet2, kVal, false, true);
+						kNearestNeighbour (dataSet1, dataSet2, kVal, false, true);
 
 				// Classify the test data (file set 1) using Nearest Neighbour
 				stats2 =
-					kNearestNeighbour (dataSet2, dataSet1, kVal, false, true);
+						kNearestNeighbour (dataSet2, dataSet1, kVal, false, true);
 
 				// Display the average success rate after the two-fold tests
 				System.out.println ("K-Nearest Neighbour: average success using two-fold tests " +
@@ -172,6 +180,42 @@ public class DigitRecognition {
 				displayMenu(true);
 				break;
 
+			case "G":	// Shuffle datasets
+				// Check if the data sets have been loaded
+				if (!filesLoaded) {
+					System.out.println ("Datasets have not been loaded. Please select option A to load the data.");
+					displayMenu(false);
+				} else {
+					int cutoffValue = dataSet1.imageList.size();
+
+					System.out.print ("Please enter the number of records to use as a cut-off (max value "
+							+ (dataSet1.imageList.size() + dataSet2.imageList.size()) + "): ");
+					String cutoff = myScanner.nextLine();
+
+					// Validate the user input
+					while (!isNumeric(cutoff)) {
+						System.out.print ("\nPlease enter the number of records to use as a cut-off (max value "
+								+ (dataSet1.imageList.size() + dataSet2.imageList.size()) + "): ");
+						cutoff = myScanner.nextLine();
+					}
+
+					cutoffValue = Integer.parseInt(cutoff);
+					while (cutoffValue >= (dataSet1.imageList.size() + dataSet2.imageList.size())) {
+						System.out.print ("\nPlease enter the number of records to use as a cut-off (max value "
+								+ (dataSet1.imageList.size() + dataSet2.imageList.size()) + "): ");
+						cutoff = myScanner.nextLine();
+					}
+					cutoffValue = Integer.parseInt(cutoff);
+
+					System.out.println ("Shuffling the two datasets ...");
+					shuffle(dataSet1, dataSet2, cutoffValue);
+					System.out.println ("Shuffling ready. Dataset1: " + shuffled1.imageList.size()
+							+ ", Dataset2: " + shuffled2.imageList.size());
+				}
+
+				displayMenu(true);
+				break;
+
 			case "X":	// Exit
 				System.exit(0);
 				break;
@@ -196,6 +240,41 @@ public class DigitRecognition {
 	}
 
 	/*
+	Merges the two datasets (training/test) together, shuffles them and creates two
+	new files, grabbing records randomly. A parameter defines the number of records
+	to populate the training dataset with.
+	 */
+	//private static void shuffle (ArrayList<Image> trainingSet, ArrayList<Image> testSet, int trainingRecordCount) {
+	private static void shuffle (FileReader trainingSet, FileReader testSet, int trainingRecordCount) {
+
+		try {
+			// Merge both datasets into a single one
+			ArrayList<Image> fullSet = new ArrayList();
+			fullSet.addAll(trainingSet.imageList);
+			fullSet.addAll(testSet.imageList);
+			// Shuffle the merged dataset
+			Collections.shuffle(fullSet);
+
+			// Clear the output datasets
+			shuffled1.imageList.clear();
+			shuffled1.imageList.trimToSize();
+			shuffled2.imageList.clear();
+			shuffled2.imageList.trimToSize();
+			for (int i = 0; i < fullSet.size(); i++) {
+				if (i < trainingRecordCount) {
+					shuffled1.imageList.add(fullSet.get(i));
+				} else {
+					shuffled2.imageList.add(fullSet.get(i));
+				}
+			}
+			// Clear the merged dataset
+			fullSet.clear();
+		} catch (NumberFormatException e) {
+			System.out.println ("DigitRecognition.shuffle - an error has occurred: " + e.getMessage());
+		}
+	}
+
+	/*
 	Checks if a String can be parsed into an Integer
 	 */
 	private static boolean isNumeric(String strNum) {
@@ -206,6 +285,8 @@ public class DigitRecognition {
 		try {
 			int d = Integer.parseInt(strNum);
 		} catch (NumberFormatException e) {
+			return false;
+		} catch (Exception e) {
 			return false;
 		}
 		return true;
@@ -221,12 +302,12 @@ public class DigitRecognition {
 		int correct = 0;
 
 		// Classify the test data
-		NearestNeighbour nn = new NearestNeighbour (trainingData, testData);
+		NearestNeighbour nn = new NearestNeighbour (trainingData);
 		for (int i = 0; i < testData.imageList.size(); i++) {
 			n[i] = nn.findNearestImage(testData.imageList.get(i));
 
 			if (testData.imageList.get(i).getDigitValue() == trainingData.imageList.get(n[i]).getDigitValue()) {
-			correct++;
+				correct++;
 			}
 
 			// Display classification data?
@@ -257,7 +338,7 @@ public class DigitRecognition {
 		int[] n = new int[testData.imageList.size()];
 		int correct = 0;
 
-		KNearestNeighbour kNN = new KNearestNeighbour (trainingData, testData, kValue);
+		KNearestNeighbour kNN = new KNearestNeighbour (trainingData, kValue);
 		for (int i = 0; i < testData.imageList.size(); i++) {
 			n[i] = kNN.findNearestImage(testData.imageList.get(i), kValue);
 
@@ -292,7 +373,7 @@ public class DigitRecognition {
 		int[] n = new int[testData.imageList.size()];
 		int correct = 0;
 
-		KMeans kMeans = new KMeans (trainingData, testData);
+		KMeans kMeans = new KMeans (trainingData);
 
 		for (int i = 0; i < testData.imageList.size(); i++) {
 			n[i] = kMeans.findNearestImage(testData.imageList.get(i));
@@ -331,7 +412,7 @@ public class DigitRecognition {
 		int[] n = new int[testData.imageList.size()];
 		int correct = 0;
 
-		KMeans2 kMeans2 = new KMeans2 (trainingData, testData);
+		KMeans2 kMeans2 = new KMeans2 (trainingData);
 
 		for (int i = 0; i < testData.imageList.size(); i++) {
 			n[i] = kMeans2.findNearestImage(testData.imageList.get(i));
@@ -368,7 +449,7 @@ public class DigitRecognition {
 		int[] n = new int[testData.imageList.size()];
 		int correct = 0;
 
-		KMedians kMedians = new KMedians (trainingData, testData);
+		KMedians kMedians = new KMedians (trainingData);
 
 		for (int i = 0; i < testData.imageList.size(); i++) {
 			n[i] = kMedians.findNearestImage(testData.imageList.get(i));

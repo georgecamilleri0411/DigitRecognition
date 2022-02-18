@@ -1,11 +1,9 @@
 public class NearestNeighbour {
 
 	private FileReader trainingFile;
-	private FileReader testFile;
 
-	public NearestNeighbour (FileReader _trainingFile, FileReader _testFile) {
+	public NearestNeighbour (FileReader _trainingFile) {
 		this.trainingFile = _trainingFile;
-		this.testFile = _testFile;
 	}
 
 	/*
