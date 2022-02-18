@@ -6,13 +6,11 @@ import java.util.Map;
 public class KMeans {
 
 	private FileReader trainingFile;
-	private FileReader testFile;
 	private ArrayList<ClusteredImage> clusteredMeans = new ArrayList();
 	private HashMap<Integer, Integer> digitCounts = new HashMap<>();
 
-	public KMeans(FileReader _trainingFile, FileReader _testFile) {
+	public KMeans(FileReader _trainingFile) {
 		this.trainingFile = _trainingFile;
-		this.testFile = _testFile;
 		setDigitCounts();
 		setClusterMeanValues();
 	}

@@ -6,14 +6,12 @@ import java.util.Map;
 public class KMeans2 {
 
 	private FileReader trainingFile;
-	private FileReader testFile;
 	private ArrayList<ClusteredImage> clusteredMeans = new ArrayList();
 	private HashMap<Integer, int[]> digitLower = new HashMap<>();	// Lower edge of cluster
 	private HashMap<Integer, int[]> digitUpper = new HashMap<>();	// Upper edge of cluster
 
-	public KMeans2(FileReader _trainingFile, FileReader _testFile) {
+	public KMeans2(FileReader _trainingFile) {
 		this.trainingFile = _trainingFile;
-		this.testFile = _testFile;
 		setClusterEdges();
 		setClusterMeanValues();
 	}

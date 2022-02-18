@@ -8,6 +8,8 @@ public class FileReader {
 
 	public ArrayList<Image> imageList = new ArrayList();
 
+	public FileReader() {}
+
 	// Reads the file passed as argument and stores it in an array of int with 3 dimensions
 	public void readFile(String filePath) {
 

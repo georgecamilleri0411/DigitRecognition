@@ -6,13 +6,11 @@ import java.util.Map;
 public class KMedians {
 
 	private FileReader trainingFile;
-	private FileReader testFile;
 	private HashMap<Integer, Integer> digitCounts = new HashMap<>();
 	private ArrayList<ClusteredImage> clusteredMedians = new ArrayList();
 
-	public KMedians(FileReader _trainingFile, FileReader _testFile) {
+	public KMedians(FileReader _trainingFile) {
 		this.trainingFile = _trainingFile;
-		this.testFile = _testFile;
 		setDigitCounts();
 		setClusterMedianValues();
 	}
