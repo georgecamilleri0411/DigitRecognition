@@ -77,7 +77,6 @@ public class DigitRecognition {
 					while (!ds.toUpperCase().equals("D") && !ds.toUpperCase().equals("S")) {
 						System.out.print ("Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: ");
 						ds = myScanner.nextLine().toUpperCase();
-						System.out.println (ds.toUpperCase());
 					}
 
 					switch (ds) {
@@ -148,7 +147,6 @@ public class DigitRecognition {
 					while (!ds.toUpperCase().equals("D") && !ds.toUpperCase().equals("S")) {
 						System.out.print ("Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: ");
 						ds = myScanner.nextLine().toUpperCase();
-						System.out.println (ds.toUpperCase());
 					}
 
 					switch (ds) {
@@ -205,7 +203,6 @@ public class DigitRecognition {
 					while (!ds.toUpperCase().equals("D") && !ds.toUpperCase().equals("S")) {
 						System.out.print ("Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: ");
 						ds = myScanner.nextLine().toUpperCase();
-						System.out.println (ds.toUpperCase());
 					}
 
 					switch (ds) {
@@ -256,7 +253,6 @@ public class DigitRecognition {
 					while (!ds.toUpperCase().equals("D") && !ds.toUpperCase().equals("S")) {
 						System.out.print ("Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: ");
 						ds = myScanner.nextLine().toUpperCase();
-						System.out.println (ds.toUpperCase());
 					}
 
 					switch (ds) {
@@ -307,7 +303,6 @@ public class DigitRecognition {
 					while (!ds.toUpperCase().equals("D") && !ds.toUpperCase().equals("S")) {
 						System.out.print ("Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: ");
 						ds = myScanner.nextLine().toUpperCase();
-						System.out.println (ds.toUpperCase());
 					}
 
 					switch (ds) {

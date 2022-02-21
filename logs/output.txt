@@ -1,5 +1,5 @@
-/Users/George/Library/Java/JavaVirtualMachines/openjdk-17.0.2/Contents/Home/bin/java -javaagent:/Users/George/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/213.6777.52/IntelliJ IDEA.app/Contents/lib/idea_rt.jar=50740:/Users/George/Library/Application Support/JetBrains/Toolbox/apps/IDEA-U/ch-0/213.6777.52/IntelliJ IDEA.app/Contents/bin -Dfile.encoding=UTF-8 -classpath /Volumes/SSD128GB/Google Drive/Education/MDX BSc CS/Modules/7 - CST3170 - Artificial Intelligence/Courseworks/CW2/Test/out/production/DigitRecognition DigitRecognition
-
+C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\bin\java.exe "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.2.2\lib\idea_rt.jar=59366:C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.2.2\bin" -Dfile.encoding=UTF-8 -classpath C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\charsets.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\access-bridge-64.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\cldrdata.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\dnsns.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\jaccess.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\jfxrt.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\localedata.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\nashorn.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\sunec.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\sunjce_provider.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\sunmscapi.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\sunpkcs11.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\ext\zipfs.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\jce.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\jfr.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\jfxswt.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\jsse.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\management-agent.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\resources.jar;C:\Users\g.camilleri\.jdks\corretto-1.8.0_322\jre\lib\rt.jar;C:\Users\g.camilleri\IdeaProjects\Test\out\production\DigitRecognition DigitRecognition
+===================================================================
 Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
 
@@ -9,10 +9,11 @@ C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
 E: K-Means v.2 (k-Means2)
 F: K-Medians (k-Medians)
-
--------------------------------------------
-
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
 X: Exit
+===================================================================
 
 Please make your choice: 
 a
@@ -20,7 +21,7 @@ Loading dataset 1 (cw2DataSet1.csv)
 Dataset 1 loaded.
 Loading dataset 2 (cw2DataSet2.csv)
 Dataset 2 loaded.
-
+===================================================================
 Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
 
@@ -30,17 +31,40 @@ C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
 E: K-Means v.2 (k-Means2)
 F: K-Medians (k-Medians)
-
--------------------------------------------
-
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
 X: Exit
+===================================================================
+
+Please make your choice: 
+g
+Please enter the number of records to use as a cut-off (max value 5620): 500
+Shuffling the two datasets ...
+Shuffling ready. Dataset1: 500, Dataset2: 5120
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
 
 Please make your choice: 
 b
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: d
 Nearest Neighbour classification success: 98.042705% (2755 correct classifications out of 2810 tests)
 Nearest Neighbour classification success: 98.469751% (2767 correct classifications out of 2810 tests)
 Nearest Neighbour: average success using two-fold tests: 98.256228%
-
+===================================================================
 Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
 
@@ -50,19 +74,19 @@ C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
 E: K-Means v.2 (k-Means2)
 F: K-Medians (k-Medians)
-
--------------------------------------------
-
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
 X: Exit
+===================================================================
 
 Please make your choice: 
-c
-Please enter the k value (15): 
-15
-K-Nearest Neighbour classification success (k==15): 97.330961% (2735 correct classifications out of 2810 tests)
-K-Nearest Neighbour classification success (k==15): 97.544484% (2741 correct classifications out of 2810 tests)
-K-Nearest Neighbour: average success using two-fold tests (k==15): 97.437722%
-
+b
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: s
+Nearest Neighbour classification success: 95.625% (4896 correct classifications out of 5120 tests)
+Nearest Neighbour classification success: 98.6% (493 correct classifications out of 500 tests)
+Nearest Neighbour: average success using two-fold tests: 97.1125%
+===================================================================
 Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
 
@@ -72,63 +96,21 @@ C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
 E: K-Means v.2 (k-Means2)
 F: K-Medians (k-Medians)
-
--------------------------------------------
-
-X: Exit
-
-Please make your choice: 
-c
-Please enter the k value (15): 
-14
-K-Nearest Neighbour classification success (k==14): 97.295374% (2734 correct classifications out of 2810 tests)
-K-Nearest Neighbour classification success (k==14): 97.580071% (2742 correct classifications out of 2810 tests)
-K-Nearest Neighbour: average success using two-fold tests (k==14): 97.437722%
-
-Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
-
-A: Load files
-B: Nearest Neighbour (NN)
-C: K-Nearest Neighbour (KNN)
-D: K-Means (k-Means)
-E: K-Means v.2 (k-Means2)
-F: K-Medians (k-Medians)
-
--------------------------------------------
-
-X: Exit
-
-Please make your choice: 
-c
-Please enter the k value (15): 
-13
-K-Nearest Neighbour classification success (k==13): 97.508897% (2740 correct classifications out of 2810 tests)
-K-Nearest Neighbour classification success (k==13): 97.758007% (2747 correct classifications out of 2810 tests)
-K-Nearest Neighbour: average success using two-fold tests (k==13): 97.633452%
-
-Handwritten Digit Recognition using Machine Learning - Console Menu
+G: Shuffle datasets
 -------------------------------------------------------------------
-
-A: Load files
-B: Nearest Neighbour (NN)
-C: K-Nearest Neighbour (KNN)
-D: K-Means (k-Means)
-E: K-Means v.2 (k-Means2)
-F: K-Medians (k-Medians)
-
--------------------------------------------
-
 X: Exit
+===================================================================
 
 Please make your choice: 
 c
 Please enter the k value (15): 
 12
-K-Nearest Neighbour classification success (k==12): 97.259786% (2733 correct classifications out of 2810 tests)
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: d
+K-Nearest Neighbour classification success (k==12): 97.330961% (2735 correct classifications out of 2810 tests)
 K-Nearest Neighbour classification success (k==12): 97.829181% (2749 correct classifications out of 2810 tests)
-K-Nearest Neighbour: average success using two-fold tests (k==12): 97.544484%
-
+K-Nearest Neighbour: average success using two-fold tests (k==12): 97.580071%
+===================================================================
 Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
 
@@ -138,85 +120,21 @@ C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
 E: K-Means v.2 (k-Means2)
 F: K-Medians (k-Medians)
-
--------------------------------------------
-
-X: Exit
-
-Please make your choice: 
-c
-Please enter the k value (15): 
-11
-K-Nearest Neighbour classification success (k==11): 97.508897% (2740 correct classifications out of 2810 tests)
-K-Nearest Neighbour classification success (k==11): 97.758007% (2747 correct classifications out of 2810 tests)
-K-Nearest Neighbour: average success using two-fold tests (k==11): 97.633452%
-
-Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
-
-A: Load files
-B: Nearest Neighbour (NN)
-C: K-Nearest Neighbour (KNN)
-D: K-Means (k-Means)
-E: K-Means v.2 (k-Means2)
-F: K-Medians (k-Medians)
-
--------------------------------------------
-
-X: Exit
-
-Please make your choice: 
-c
-Please enter the k value (15): 
-10
-K-Nearest Neighbour classification success (k==10): 97.615658% (2743 correct classifications out of 2810 tests)
-K-Nearest Neighbour classification success (k==10): 97.900356% (2751 correct classifications out of 2810 tests)
-K-Nearest Neighbour: average success using two-fold tests (k==10): 97.758007%
-
-Handwritten Digit Recognition using Machine Learning - Console Menu
+G: Shuffle datasets
 -------------------------------------------------------------------
-
-A: Load files
-B: Nearest Neighbour (NN)
-C: K-Nearest Neighbour (KNN)
-D: K-Means (k-Means)
-E: K-Means v.2 (k-Means2)
-F: K-Medians (k-Medians)
-
--------------------------------------------
-
 X: Exit
-
-Please make your choice: 
-c
-Please enter the k value (15): 
-9
-K-Nearest Neighbour classification success (k==9): 97.935943% (2752 correct classifications out of 2810 tests)
-K-Nearest Neighbour classification success (k==9): 98.007117% (2754 correct classifications out of 2810 tests)
-K-Nearest Neighbour: average success using two-fold tests (k==9): 97.97153%
-
-Handwritten Digit Recognition using Machine Learning - Console Menu
--------------------------------------------------------------------
-
-A: Load files
-B: Nearest Neighbour (NN)
-C: K-Nearest Neighbour (KNN)
-D: K-Means (k-Means)
-E: K-Means v.2 (k-Means2)
-F: K-Medians (k-Medians)
-
--------------------------------------------
-
-X: Exit
+===================================================================
 
 Please make your choice: 
 c
 Please enter the k value (15): 
 8
-K-Nearest Neighbour classification success (k==8): 97.72242% (2746 correct classifications out of 2810 tests)
-K-Nearest Neighbour classification success (k==8): 97.97153% (2753 correct classifications out of 2810 tests)
-K-Nearest Neighbour: average success using two-fold tests (k==8): 97.846975%
-
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: d
+K-Nearest Neighbour classification success (k==8): 97.686833% (2745 correct classifications out of 2810 tests)
+K-Nearest Neighbour classification success (k==8): 97.935943% (2752 correct classifications out of 2810 tests)
+K-Nearest Neighbour: average success using two-fold tests (k==8): 97.811388%
+===================================================================
 Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
 
@@ -226,85 +144,21 @@ C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
 E: K-Means v.2 (k-Means2)
 F: K-Medians (k-Medians)
-
--------------------------------------------
-
-X: Exit
-
-Please make your choice: 
-c
-Please enter the k value (15): 
-7
-K-Nearest Neighbour classification success (k==7): 97.900356% (2751 correct classifications out of 2810 tests)
-K-Nearest Neighbour classification success (k==7): 98.042705% (2755 correct classifications out of 2810 tests)
-K-Nearest Neighbour: average success using two-fold tests (k==7): 97.97153%
-
-Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
-
-A: Load files
-B: Nearest Neighbour (NN)
-C: K-Nearest Neighbour (KNN)
-D: K-Means (k-Means)
-E: K-Means v.2 (k-Means2)
-F: K-Medians (k-Medians)
-
--------------------------------------------
-
-X: Exit
-
-Please make your choice: 
-c
-Please enter the k value (15): 
-6
-K-Nearest Neighbour classification success (k==6): 97.686833% (2745 correct classifications out of 2810 tests)
-K-Nearest Neighbour classification success (k==6): 98.113879% (2757 correct classifications out of 2810 tests)
-K-Nearest Neighbour: average success using two-fold tests (k==6): 97.900356%
-
-Handwritten Digit Recognition using Machine Learning - Console Menu
+G: Shuffle datasets
 -------------------------------------------------------------------
-
-A: Load files
-B: Nearest Neighbour (NN)
-C: K-Nearest Neighbour (KNN)
-D: K-Means (k-Means)
-E: K-Means v.2 (k-Means2)
-F: K-Medians (k-Medians)
-
--------------------------------------------
-
 X: Exit
-
-Please make your choice: 
-c
-Please enter the k value (15): 
-5
-K-Nearest Neighbour classification success (k==5): 97.758007% (2747 correct classifications out of 2810 tests)
-K-Nearest Neighbour classification success (k==5): 98.362989% (2764 correct classifications out of 2810 tests)
-K-Nearest Neighbour: average success using two-fold tests (k==5): 98.060498%
-
-Handwritten Digit Recognition using Machine Learning - Console Menu
--------------------------------------------------------------------
-
-A: Load files
-B: Nearest Neighbour (NN)
-C: K-Nearest Neighbour (KNN)
-D: K-Means (k-Means)
-E: K-Means v.2 (k-Means2)
-F: K-Medians (k-Medians)
-
--------------------------------------------
-
-X: Exit
+===================================================================
 
 Please make your choice: 
 c
 Please enter the k value (15): 
 4
-K-Nearest Neighbour classification success (k==4): 97.864769% (2750 correct classifications out of 2810 tests)
-K-Nearest Neighbour classification success (k==4): 98.042705% (2755 correct classifications out of 2810 tests)
-K-Nearest Neighbour: average success using two-fold tests (k==4): 97.953737%
-
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: d
+K-Nearest Neighbour classification success (k==4): 97.829181% (2749 correct classifications out of 2810 tests)
+K-Nearest Neighbour classification success (k==4): 98.007117% (2754 correct classifications out of 2810 tests)
+K-Nearest Neighbour: average success using two-fold tests (k==4): 97.918149%
+===================================================================
 Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
 
@@ -314,63 +168,21 @@ C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
 E: K-Means v.2 (k-Means2)
 F: K-Medians (k-Medians)
-
--------------------------------------------
-
-X: Exit
-
-Please make your choice: 
-c
-Please enter the k value (15): 
-3
-K-Nearest Neighbour classification success (k==3): 98.078292% (2756 correct classifications out of 2810 tests)
-K-Nearest Neighbour classification success (k==3): 98.113879% (2757 correct classifications out of 2810 tests)
-K-Nearest Neighbour: average success using two-fold tests (k==3): 98.096085%
-
-Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
-
-A: Load files
-B: Nearest Neighbour (NN)
-C: K-Nearest Neighbour (KNN)
-D: K-Means (k-Means)
-E: K-Means v.2 (k-Means2)
-F: K-Medians (k-Medians)
-
--------------------------------------------
-
-X: Exit
-
-Please make your choice: 
-c
-Please enter the k value (15): 
-2
-K-Nearest Neighbour classification success (k==2): 97.010676% (2726 correct classifications out of 2810 tests)
-K-Nearest Neighbour classification success (k==2): 97.651246% (2744 correct classifications out of 2810 tests)
-K-Nearest Neighbour: average success using two-fold tests (k==2): 97.330961%
-
-Handwritten Digit Recognition using Machine Learning - Console Menu
+G: Shuffle datasets
 -------------------------------------------------------------------
-
-A: Load files
-B: Nearest Neighbour (NN)
-C: K-Nearest Neighbour (KNN)
-D: K-Means (k-Means)
-E: K-Means v.2 (k-Means2)
-F: K-Medians (k-Medians)
-
--------------------------------------------
-
 X: Exit
+===================================================================
 
 Please make your choice: 
 c
 Please enter the k value (15): 
 1
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: d
 K-Nearest Neighbour classification success (k==1): 98.042705% (2755 correct classifications out of 2810 tests)
 K-Nearest Neighbour classification success (k==1): 98.469751% (2767 correct classifications out of 2810 tests)
 K-Nearest Neighbour: average success using two-fold tests (k==1): 98.256228%
-
+===================================================================
 Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
 
@@ -380,17 +192,115 @@ C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
 E: K-Means v.2 (k-Means2)
 F: K-Medians (k-Medians)
-
--------------------------------------------
-
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
 X: Exit
+===================================================================
+
+Please make your choice: 
+c
+Please enter the k value (15): 
+12
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: s
+K-Nearest Neighbour classification success (k==12): 93.105469% (4767 correct classifications out of 5120 tests)
+K-Nearest Neighbour classification success (k==12): 97.2% (486 correct classifications out of 500 tests)
+K-Nearest Neighbour: average success using two-fold tests (k==12): 95.152734%
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
+
+Please make your choice: 
+c
+Please enter the k value (15): 
+8
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: s
+K-Nearest Neighbour classification success (k==8): 93.945312% (4810 correct classifications out of 5120 tests)
+K-Nearest Neighbour classification success (k==8): 98.4% (492 correct classifications out of 500 tests)
+K-Nearest Neighbour: average success using two-fold tests (k==8): 96.172656%
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
+
+Please make your choice: 
+c
+Please enter the k value (15): 
+4
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: s
+K-Nearest Neighbour classification success (k==4): 94.335938% (4830 correct classifications out of 5120 tests)
+K-Nearest Neighbour classification success (k==4): 98.4% (492 correct classifications out of 500 tests)
+K-Nearest Neighbour: average success using two-fold tests (k==4): 96.367969%
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
+
+Please make your choice: 
+c
+Please enter the k value (15): 
+1
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: s
+K-Nearest Neighbour classification success (k==1): 95.625% (4896 correct classifications out of 5120 tests)
+K-Nearest Neighbour classification success (k==1): 98.6% (493 correct classifications out of 500 tests)
+K-Nearest Neighbour: average success using two-fold tests (k==1): 97.1125%
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
 
 Please make your choice: 
 d
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: d
 K-Means classification success: 89.893238% (2526 correct classifications out of 2810 tests)
 K-Means classification success: 90.960854% (2556 correct classifications out of 2810 tests)
 K-Means: average success using two-fold tests: 90.427046%
-
+===================================================================
 Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
 
@@ -400,17 +310,41 @@ C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
 E: K-Means v.2 (k-Means2)
 F: K-Medians (k-Medians)
-
--------------------------------------------
-
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
 X: Exit
+===================================================================
+
+Please make your choice: 
+d
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: s
+K-Means classification success: 90.859375% (4652 correct classifications out of 5120 tests)
+K-Means classification success: 90.4% (452 correct classifications out of 500 tests)
+K-Means: average success using two-fold tests: 90.629688%
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
 
 Please make your choice: 
 e
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: d
 K-Means2 classification success: 37.935943% (1066 correct classifications out of 2810 tests)
 K-Means2 classification success: 40.071174% (1126 correct classifications out of 2810 tests)
 K-Means2: average success using two-fold tests: 39.003559%
-
+===================================================================
 Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
 
@@ -420,17 +354,41 @@ C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
 E: K-Means v.2 (k-Means2)
 F: K-Medians (k-Medians)
-
--------------------------------------------
-
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
 X: Exit
+===================================================================
+
+Please make your choice: 
+e
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: s
+K-Means2 classification success: 68.417969% (3503 correct classifications out of 5120 tests)
+K-Means2 classification success: 29.6% (148 correct classifications out of 500 tests)
+K-Means2: average success using two-fold tests: 49.008984%
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
 
 Please make your choice: 
 f
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: d
 K-Medians classification success: 89.252669% (2508 correct classifications out of 2810 tests)
 K-Medians classification success: 90.142349% (2533 correct classifications out of 2810 tests)
 K-Medians: average success using two-fold tests: 89.697509%
-
+===================================================================
 Handwritten Digit Recognition using Machine Learning - Console Menu
 -------------------------------------------------------------------
 
@@ -440,10 +398,238 @@ C: K-Nearest Neighbour (KNN)
 D: K-Means (k-Means)
 E: K-Means v.2 (k-Means2)
 F: K-Medians (k-Medians)
-
--------------------------------------------
-
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
 X: Exit
+===================================================================
+
+Please make your choice: 
+f
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: s
+K-Medians classification success: 89.179688% (4566 correct classifications out of 5120 tests)
+K-Medians classification success: 89% (445 correct classifications out of 500 tests)
+K-Medians: average success using two-fold tests: 89.089844%
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
+
+Please make your choice: 
+g
+Please enter the number of records to use as a cut-off (max value 5620): 1500
+Shuffling the two datasets ...
+Shuffling ready. Dataset1: 1500, Dataset2: 4120
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
+
+Please make your choice: 
+b
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: s
+Nearest Neighbour classification success: 98.033981% (4039 correct classifications out of 4120 tests)
+Nearest Neighbour classification success: 98.866667% (1483 correct classifications out of 1500 tests)
+Nearest Neighbour: average success using two-fold tests: 98.450324%
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
+
+Please make your choice: 
+c
+Please enter the k value (15): 
+12
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: s
+K-Nearest Neighbour classification success (k==12): 97.427184% (4014 correct classifications out of 4120 tests)
+K-Nearest Neighbour classification success (k==12): 98.866667% (1483 correct classifications out of 1500 tests)
+K-Nearest Neighbour: average success using two-fold tests (k==12): 98.146926%
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
+
+Please make your choice: 
+c
+Please enter the k value (15): 
+8
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: s
+K-Nearest Neighbour classification success (k==8): 97.427184% (4014 correct classifications out of 4120 tests)
+K-Nearest Neighbour classification success (k==8): 99% (1485 correct classifications out of 1500 tests)
+K-Nearest Neighbour: average success using two-fold tests (k==8): 98.213592%
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
+
+Please make your choice: 
+c
+Please enter the k value (15): 
+4
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: s
+K-Nearest Neighbour classification success (k==4): 97.718447% (4026 correct classifications out of 4120 tests)
+K-Nearest Neighbour classification success (k==4): 98.866667% (1483 correct classifications out of 1500 tests)
+K-Nearest Neighbour: average success using two-fold tests (k==4): 98.292557%
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
+
+Please make your choice: 
+c
+Please enter the k value (15): 
+1
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: s
+K-Nearest Neighbour classification success (k==1): 98.033981% (4039 correct classifications out of 4120 tests)
+K-Nearest Neighbour classification success (k==1): 98.866667% (1483 correct classifications out of 1500 tests)
+K-Nearest Neighbour: average success using two-fold tests (k==1): 98.450324%
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
+
+Please make your choice: 
+d
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: s
+K-Means classification success: 91.18932% (3757 correct classifications out of 4120 tests)
+K-Means classification success: 91.133333% (1367 correct classifications out of 1500 tests)
+K-Means: average success using two-fold tests: 91.161327%
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
+
+Please make your choice: 
+e
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: s
+K-Means2 classification success: 53.737864% (2214 correct classifications out of 4120 tests)
+K-Means2 classification success: 32.8% (492 correct classifications out of 1500 tests)
+K-Means2: average success using two-fold tests: 43.268932%
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
+
+Please make your choice: 
+f
+Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: s
+K-Medians classification success: 90.169903% (3715 correct classifications out of 4120 tests)
+K-Medians classification success: 90.133333% (1352 correct classifications out of 1500 tests)
+K-Medians: average success using two-fold tests: 90.151618%
+===================================================================
+Handwritten Digit Recognition using Machine Learning - Console Menu
+-------------------------------------------------------------------
+
+A: Load files
+B: Nearest Neighbour (NN)
+C: K-Nearest Neighbour (KNN)
+D: K-Means (k-Means)
+E: K-Means v.2 (k-Means2)
+F: K-Medians (k-Medians)
+-------------------------------------------------------------------
+G: Shuffle datasets
+-------------------------------------------------------------------
+X: Exit
+===================================================================
 
 Please make your choice: 
 x
