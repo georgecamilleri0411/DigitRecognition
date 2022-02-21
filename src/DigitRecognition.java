@@ -31,7 +31,7 @@ public class DigitRecognition {
 
 		if (displayChoices) {
 			System.out.println ("===================================================================");
-			System.out.println ("\nHandwritten Digit Recognition using Machine Learning - Console Menu");
+			System.out.println ("Handwritten Digit Recognition using Machine Learning - Console Menu");
 			System.out.println ("-------------------------------------------------------------------\n");
 			System.out.println ("A: Load files");
 			System.out.println ("B: Nearest Neighbour (NN)");
