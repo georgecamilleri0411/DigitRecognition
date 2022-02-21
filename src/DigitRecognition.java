@@ -1,16 +1,19 @@
-import java.security.KeyStore;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 import java.util.Scanner;
 
 public class DigitRecognition {
 
 	private static FileReader dataSet1;
- 	private static FileReader dataSet2;
+	private static FileReader dataSet2;
 	private static FileReader shuffled1 = new FileReader();
 	private static FileReader shuffled2 = new FileReader();
 	private static boolean filesLoaded = false;
+	private static boolean shuffled = false;
+	static double stats1 = 0;
+	static double stats2 = 0;
 
 	public static void main (String args[]) {
 
@@ -69,13 +72,48 @@ public class DigitRecognition {
 					displayMenu(false);
 				}
 
-				// Classify the test data (file set 2) using Nearest Neighbour
-				double stats1 =
-						nearestNeighbour(dataSet1, dataSet2,false, true);
+				if (shuffled) {
+					String ds = "";
+					while (!ds.toUpperCase().equals("D") && !ds.toUpperCase().equals("S")) {
+						System.out.print ("Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: ");
+						ds = myScanner.nextLine().toUpperCase();
+						System.out.println (ds.toUpperCase());
+					}
 
-				// Classify the test data (file set 1) using Nearest Neighbour
-				double stats2 =
-						nearestNeighbour(dataSet2, dataSet1,false, true);
+					switch (ds) {
+						case "D":	// Use the default (supplied) datasets
+							// Classify the test data (file set 2) using Nearest Neighbour
+							stats1 =
+									nearestNeighbour(dataSet1, dataSet2,false, true);
+
+							// Classify the test data (file set 1) using Nearest Neighbour
+							stats2 =
+									nearestNeighbour(dataSet2, dataSet1,false, true);
+
+							break;
+
+						case "S":	// Use the shuffled datasets
+							// Classify the test data (file set 2) using Nearest Neighbour
+							stats1 =
+									nearestNeighbour(shuffled1, shuffled2,false, true);
+
+							// Classify the test data (file set 1) using Nearest Neighbour
+							stats2 =
+									nearestNeighbour(shuffled2, shuffled1,false, true);
+
+							break;
+
+					}
+
+				} else {
+					// Classify the test data (file set 2) using Nearest Neighbour
+					stats1 =
+							nearestNeighbour(dataSet1, dataSet2,false, true);
+
+					// Classify the test data (file set 1) using Nearest Neighbour
+					stats2 =
+							nearestNeighbour(dataSet2, dataSet1,false, true);
+				}
 
 				// Display the average success rate after the two-fold tests
 				System.out.println ("Nearest Neighbour: average success using two-fold tests: " +
@@ -105,13 +143,48 @@ public class DigitRecognition {
 				}
 				int kVal = Integer.parseInt(kValStr);
 
-				// Classify the test data (file set 2) using K-Nearest Neighbour
-				stats1 =
-						kNearestNeighbour (dataSet1, dataSet2, kVal, false, true);
+				if (shuffled) {
+					String ds = "";
+					while (!ds.toUpperCase().equals("D") && !ds.toUpperCase().equals("S")) {
+						System.out.print ("Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: ");
+						ds = myScanner.nextLine().toUpperCase();
+						System.out.println (ds.toUpperCase());
+					}
 
-				// Classify the test data (file set 1) using Nearest Neighbour
-				stats2 =
-						kNearestNeighbour (dataSet2, dataSet1, kVal, false, true);
+					switch (ds) {
+						case "D":	// Use the default (supplied) datasets
+							// Classify the test data (file set 2) using Nearest Neighbour
+							stats1 =
+									kNearestNeighbour(dataSet1, dataSet2, kVal,false, true);
+
+							// Classify the test data (file set 1) using Nearest Neighbour
+							stats2 =
+									kNearestNeighbour(dataSet2, dataSet1, kVal,false, true);
+
+							break;
+
+						case "S":	// Use the shuffled datasets
+							// Classify the test data (file set 2) using Nearest Neighbour
+							stats1 =
+									kNearestNeighbour(shuffled1, shuffled2, kVal,false, true);
+
+							// Classify the test data (file set 1) using Nearest Neighbour
+							stats2 =
+									kNearestNeighbour(shuffled2, shuffled1, kVal,false, true);
+
+							break;
+
+					}
+
+				} else {
+					// Classify the test data (file set 2) using K-Nearest Neighbour
+					stats1 =
+							kNearestNeighbour (dataSet1, dataSet2, kVal, false, true);
+
+					// Classify the test data (file set 1) using Nearest Neighbour
+					stats2 =
+							kNearestNeighbour (dataSet2, dataSet1, kVal, false, true);
+				}
 
 				// Display the average success rate after the two-fold tests
 				System.out.println ("K-Nearest Neighbour: average success using two-fold tests " +
@@ -127,11 +200,42 @@ public class DigitRecognition {
 					displayMenu(false);
 				}
 
-				// Classify the test data (file set 2) using K-Nearest Neighbour
-				stats1 = kMeans (dataSet1, dataSet2, false, true);
+				if (shuffled) {
+					String ds = "";
+					while (!ds.toUpperCase().equals("D") && !ds.toUpperCase().equals("S")) {
+						System.out.print ("Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: ");
+						ds = myScanner.nextLine().toUpperCase();
+						System.out.println (ds.toUpperCase());
+					}
 
-				// Classify the test data (file set 1) using Nearest Neighbour
-				stats2 = kMeans (dataSet2, dataSet1, false, true);
+					switch (ds) {
+						case "D":	// Use the default (supplied) datasets
+							// Classify the test data (file set 2) using K-Means
+							stats1 = kMeans (dataSet1, dataSet2, false, true);
+
+							// Classify the test data (file set 1) using K-Means
+							stats2 = kMeans (dataSet2, dataSet1, false, true);
+
+							break;
+
+						case "S":	// Use the shuffled datasets
+							// Classify the test data (file set 2) using K-Means
+							stats1 = kMeans (shuffled1, shuffled2, false, true);
+
+							// Classify the test data (file set 1) using K-Means
+							stats2 = kMeans (shuffled2, shuffled1, false, true);
+
+							break;
+
+					}
+
+				} else {
+					// Classify the test data (file set 2) using K-Means
+					stats1 = kMeans (dataSet1, dataSet2, false, true);
+
+					// Classify the test data (file set 1) using K-Means
+					stats2 = kMeans (dataSet2, dataSet1, false, true);
+				}
 
 				// Display the average success rate after the two-fold tests
 				System.out.println ("K-Means: average success using two-fold tests: " +
@@ -147,11 +251,42 @@ public class DigitRecognition {
 					displayMenu(false);
 				}
 
-				// Classify the test data (file set 2) using K-Means2
-				stats1 = kMeans2 (dataSet1, dataSet2, false, true);
+				if (shuffled) {
+					String ds = "";
+					while (!ds.toUpperCase().equals("D") && !ds.toUpperCase().equals("S")) {
+						System.out.print ("Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: ");
+						ds = myScanner.nextLine().toUpperCase();
+						System.out.println (ds.toUpperCase());
+					}
 
-				// Classify the test data (file set 1) using Nearest Neighbour
-				stats2 = kMeans2 (dataSet2, dataSet1, false, true);
+					switch (ds) {
+						case "D":	// Use the default (supplied) datasets
+							// Classify the test data (file set 2) using K-Means2
+							stats1 = kMeans2 (dataSet1, dataSet2, false, true);
+
+							// Classify the test data (file set 1) using K-Means2
+							stats2 = kMeans2 (dataSet2, dataSet1, false, true);
+
+							break;
+
+						case "S":	// Use the shuffled datasets
+							// Classify the test data (file set 2) using K-Means2
+							stats1 = kMeans2 (shuffled1, shuffled2, false, true);
+
+							// Classify the test data (file set 1) using K-Means2
+							stats2 = kMeans2 (shuffled2, shuffled1, false, true);
+
+							break;
+
+					}
+
+				} else {
+					// Classify the test data (file set 2) using K-Means2
+					stats1 = kMeans2 (dataSet1, dataSet2, false, true);
+
+					// Classify the test data (file set 1) using K-Means2
+					stats2 = kMeans2 (dataSet2, dataSet1, false, true);
+				}
 
 				// Display the average success rate after the two-fold tests
 				System.out.println ("K-Means2: average success using two-fold tests: " +
@@ -167,11 +302,42 @@ public class DigitRecognition {
 					displayMenu(false);
 				}
 
-				// Classify the test data (file set 2) using K-Means2
-				stats1 = kMedians (dataSet1, dataSet2, false, true);
+				if (shuffled) {
+					String ds = "";
+					while (!ds.toUpperCase().equals("D") && !ds.toUpperCase().equals("S")) {
+						System.out.print ("Enter [D] to use the supplied Datasets or [S] to use the Shuffled versions: ");
+						ds = myScanner.nextLine().toUpperCase();
+						System.out.println (ds.toUpperCase());
+					}
 
-				// Classify the test data (file set 1) using Nearest Neighbour
-				stats2 = kMedians (dataSet2, dataSet1, false, true);
+					switch (ds) {
+						case "D":	// Use the default (supplied) datasets
+							// Classify the test data (file set 2) using K-Medians
+							stats1 = kMedians (dataSet1, dataSet2, false, true);
+
+							// Classify the test data (file set 1) using K-Medians
+							stats2 = kMedians (dataSet2, dataSet1, false, true);
+
+							break;
+
+						case "S":	// Use the shuffled datasets
+							// Classify the test data (file set 2) using K-Medians
+							stats1 = kMedians (shuffled1, shuffled2, false, true);
+
+							// Classify the test data (file set 1) using K-Medians
+							stats2 = kMedians (shuffled2, shuffled1, false, true);
+
+							break;
+
+					}
+
+				} else {
+					// Classify the test data (file set 2) using K-Medians
+					stats1 = kMedians (dataSet1, dataSet2, false, true);
+
+					// Classify the test data (file set 1) using K-Medians
+					stats2 = kMedians (dataSet2, dataSet1, false, true);
+				}
 
 				// Display the average success rate after the two-fold tests
 				System.out.println ("K-Medians: average success using two-fold tests: " +
@@ -269,8 +435,10 @@ public class DigitRecognition {
 			}
 			// Clear the merged dataset
 			fullSet.clear();
+			shuffled = true;
 		} catch (NumberFormatException e) {
 			System.out.println ("DigitRecognition.shuffle - an error has occurred: " + e.getMessage());
+			shuffled = false;
 		}
 	}
 
