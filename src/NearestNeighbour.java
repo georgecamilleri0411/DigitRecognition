@@ -2,6 +2,9 @@ public class NearestNeighbour {
 
 	private FileReader trainingFile;
 
+	/*
+	Constructor accepting the training file as input argument
+	 */
 	public NearestNeighbour (FileReader _trainingFile) {
 		this.trainingFile = _trainingFile;
 	}

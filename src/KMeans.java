@@ -9,6 +9,9 @@ public class KMeans {
 	private ArrayList<ClusteredImage> clusteredMeans = new ArrayList();
 	private HashMap<Integer, Integer> digitCounts = new HashMap<>();
 
+	/*
+	Constructor accepting the training file as input argument.
+	 */
 	public KMeans(FileReader _trainingFile) {
 		this.trainingFile = _trainingFile;
 		setDigitCounts();

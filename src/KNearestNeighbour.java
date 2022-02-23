@@ -16,14 +16,14 @@ public class KNearestNeighbour {
 	}
 
 	/*
-	Constructor accepting the training and test files
+	Constructor accepting the training file
 	 */
 	public KNearestNeighbour(FileReader _trainingFile) {
 		this.trainingFile = _trainingFile;
 	}
 
 	/*
-	Constructor accepting the training and test files as well as the value for k
+	Constructor accepting the training file as well as the value for k
 	 */
 	public KNearestNeighbour(FileReader _trainingFile, int _k) {
 		this.trainingFile = _trainingFile;

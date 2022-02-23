@@ -10,6 +10,9 @@ public class KMeans2 {
 	private HashMap<Integer, int[]> digitLower = new HashMap<>();	// Lower edge of cluster
 	private HashMap<Integer, int[]> digitUpper = new HashMap<>();	// Upper edge of cluster
 
+	/*
+	Constructor accepting the training file as input argument.
+	 */
 	public KMeans2(FileReader _trainingFile) {
 		this.trainingFile = _trainingFile;
 		setClusterEdges();

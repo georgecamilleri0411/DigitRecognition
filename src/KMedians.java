@@ -9,6 +9,9 @@ public class KMedians {
 	private HashMap<Integer, Integer> digitCounts = new HashMap<>();
 	private ArrayList<ClusteredImage> clusteredMedians = new ArrayList();
 
+	/*
+	Constructor accepting the training file as input argument.
+	 */
 	public KMedians(FileReader _trainingFile) {
 		this.trainingFile = _trainingFile;
 		setDigitCounts();
